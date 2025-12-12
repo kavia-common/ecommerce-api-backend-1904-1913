@@ -5,6 +5,7 @@ from flask_smorest import Api
 from .config import BaseConfig
 from .errors import register_error_handlers
 from .routes.health import blp as health_blp
+from .services.storage import init_storage_seed  # Seed repositories at startup
 
 
 def create_app():
@@ -50,6 +51,10 @@ def create_app():
 
     # Register global error handlers
     register_error_handlers(app)
+
+    # Seed initial in-memory data
+    with app.app_context():
+        init_storage_seed()
 
     return app
 
