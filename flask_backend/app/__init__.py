@@ -8,6 +8,7 @@ from .routes.health import blp as health_blp
 from .routes.auth import blp as auth_blp
 from .routes.products import blp as products_blp
 from .routes.cart import blp as cart_blp
+from .routes.orders import blp as orders_blp
 from .services.storage import init_storage_seed  # Seed repositories at startup
 
 
@@ -54,6 +55,7 @@ def create_app():
     api.register_blueprint(auth_blp)
     api.register_blueprint(products_blp)
     api.register_blueprint(cart_blp)
+    api.register_blueprint(orders_blp)
 
     # Register global error handlers
     register_error_handlers(app)
